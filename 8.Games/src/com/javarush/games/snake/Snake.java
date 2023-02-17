@@ -12,6 +12,7 @@ public class Snake {
     public int x;
     public int y;
     private List<GameObject> snakeParts = new ArrayList<>();
+    public boolean isAlive = true;
 
     public Snake(int x, int y){
         this.x = x;
@@ -25,9 +26,9 @@ public class Snake {
 
     }
     public void draw( Game game){
-        game.setCellValue(snakeParts.get(0).x,snakeParts.get(0).y,HEAD_SIGN);
+        game.setCellValueEx(snakeParts.get(0).x,snakeParts.get(0).y,Color.NONE,HEAD_SIGN,Color.BLACK,75);
         for (int i = 1; i < snakeParts.size(); i++) {
-            game.setCellValue(snakeParts.get(i).x, snakeParts.get(i).y, BODY_SIGN);
+            game.setCellValueEx(snakeParts.get(i).x, snakeParts.get(i).y,Color.NONE,BODY_SIGN,Color.BLACK,75);
         }
 
     }
