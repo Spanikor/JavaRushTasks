@@ -13,8 +13,15 @@ public class Snake {
     public int y;
     private List<GameObject> snakeParts = new ArrayList<>();
     public boolean isAlive = true;
+    private Direction direction = Direction.LEFT;
 
-    public Snake(int x, int y){
+
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    public Snake(int x, int y) {
         this.x = x;
         this.y = y;
         GameObject go1 = new GameObject(x, y);
@@ -25,13 +32,26 @@ public class Snake {
         snakeParts.add(go3);
 
     }
-    public void draw( Game game){
-        game.setCellValueEx(snakeParts.get(0).x,snakeParts.get(0).y,Color.NONE,HEAD_SIGN,Color.BLACK,75);
-        for (int i = 1; i < snakeParts.size(); i++) {
-            game.setCellValueEx(snakeParts.get(i).x, snakeParts.get(i).y,Color.NONE,BODY_SIGN,Color.BLACK,75);
+
+    public void draw(Game game) {
+        for (int i = 0; i < snakeParts.size(); i++){
+            if (isAlive == false){
+                if (i == 0){
+                    game.setCellValueEx(x, y, Color.NONE, HEAD_SIGN, Color.RED, 75);
+                }
+                else {
+                    game.setCellValueEx(x + i, y, Color.NONE, BODY_SIGN, Color.RED, 75);
+                }
+            }
+            else{
+                if (i == 0){
+                    game.setCellValueEx(x, y, Color.NONE, HEAD_SIGN, Color.BLACK, 75);
+                }
+                else {
+                    game.setCellValueEx(x + i, y, Color.NONE,BODY_SIGN, Color.BLACK, 75);
+                }
+            }
         }
-
     }
-
-
 }
+
