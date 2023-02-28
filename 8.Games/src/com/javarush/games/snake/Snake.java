@@ -14,7 +14,7 @@ public class Snake {
     private List<GameObject> snakeParts = new ArrayList<>();
     public boolean isAlive = true;
     private Direction direction = Direction.LEFT;
-
+   
 
 
     public void setDirection(Direction direction) {
